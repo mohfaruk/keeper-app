@@ -9,6 +9,7 @@ function CreateNote({ add }) {
     title: "",
     content: "",
   });
+  //const [input, setInput] = useState(props.edit ? props.edit.value : "");
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -33,6 +34,9 @@ function CreateNote({ add }) {
   return (
     <div>
       <form className="create-note">
+        {/* {props.edit ? (
+
+      )} */}
         <input
           name="title"
           placeholder="Add Note..."
