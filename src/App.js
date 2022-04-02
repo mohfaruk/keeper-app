@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Note from "./components/Note";
@@ -13,18 +13,20 @@ export default function App() {
     });
   }
 
-  function updateTask(index) {
-    const newTasks = [...items];
-    const task = newTasks[index];
-    const updateTask = prompt(`Update "${task.title}" note?`, task.content);
-    const newItem = { title: task.title, content: updateTask };
-    newTasks.splice(index, 1, newItem);
-
-    if (updateTask === "" || updateTask === null) {
+  function updateTask(id, text) {
+    if (text === "" || text === null) {
       return;
-    } else {
-      setItems(newTasks);
     }
+    setItems(prevValue => {
+      const newItems = prevValue.map((noteItem, index) => {
+        if (index !== id) {
+          return noteItem;
+        }
+        const newItem = { ...noteItem, content: text };
+        return newItem;
+      });
+      return newItems;
+    });
   }
 
   function removeNote(id) {
@@ -46,7 +48,6 @@ export default function App() {
           title={noteItem.title}
           content={noteItem.content}
           update={updateTask}
-          // edit={editTask}
           remove={removeNote}
         />
       ))}{" "}

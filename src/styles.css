@@ -147,6 +147,11 @@ form.create-note button {
     outline: none;
 }
 
+.edit-form {
+    height: 100px;
+    width: 200px;
+}
+
 button {
     cursor: pointer;
 }
