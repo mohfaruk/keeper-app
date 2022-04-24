@@ -8,6 +8,7 @@ function Note({ id, title, content, update, remove }) {
 
   function handleChange(evt) {
     setValue(evt.target.value);
+    update(id, value);
   }
 
   function handleSubmit(evt) {
@@ -21,7 +22,8 @@ function Note({ id, title, content, update, remove }) {
       <p>{content}</p>
       {editNote && (
         <form className="edit-form" onSubmit={handleSubmit}>
-          <input onChange={handleChange} placeholder={content} />
+          <input type="text" placeholder={content} onChange={handleChange} />
+          {/* <input type="text" value={content} onChange={handleChange} /> */}
         </form>
       )}
       <div>
