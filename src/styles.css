@@ -150,6 +150,13 @@ form.create-note button {
 .edit-form {
     height: 100px;
     width: 200px;
+    box-shadow: none;
+}
+
+.edit-form textarea {
+    position: relative;
+    right: 25px;
+    bottom: 20px;
 }
 
 button {
