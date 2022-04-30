@@ -5,19 +5,12 @@ import Zoom from "@mui/material/Zoom";
 
 function CreateNote({ add }) {
   const [select, setSelect] = useState(false);
-  const [btnDisable, setBtnDisable] = useState(true);
   const [note, setNote] = useState({
     title: "",
     content: "",
   });
 
   function handleChange(evt) {
-    if (note.title !== "") {
-      setBtnDisable(false);
-    } else {
-      setBtnDisable(true);
-    }
-
     const { name, value } = evt.target;
     setNote(prevValue => {
       return {
@@ -55,9 +48,14 @@ function CreateNote({ add }) {
             onChange={handleChange}
           />
         )}
+
         <Zoom in={select}>
-          <Fab disabled={btnDisable} onClick={handleSubmit}>
-            <AddIcon />
+          <Fab
+            className="create-button"
+            disabled={!note.content}
+            onClick={handleSubmit}
+          >
+            <AddIcon className="create-button" />
           </Fab>
         </Zoom>
       </form>
